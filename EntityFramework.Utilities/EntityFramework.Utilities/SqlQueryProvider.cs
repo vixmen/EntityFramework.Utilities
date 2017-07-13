@@ -56,7 +56,7 @@ namespace EntityFramework.Utilities
                 {
                     con.Open();
                 }
-                using (SqlBulkCopy copy = new SqlBulkCopy(con))
+                using (SqlBulkCopy copy = new SqlBulkCopy(con, SqlBulkCopyOptions.FireTriggers, null))
                 {
                     copy.BatchSize = Math.Min(reader.RecordsAffected, batchSize ?? 15000); //default batch size
                     if (!string.IsNullOrWhiteSpace(schema))
